@@ -1,26 +1,18 @@
 const { NxAppWebpackPlugin } = require('@nx/webpack/app-plugin');
 const { NxReactWebpackPlugin } = require('@nx/react/webpack-plugin');
-const webpack = require('webpack');
 const { join } = require('path');
 
-console.log(process.env.NX_TASK_TARGET_PROJECT);
 module.exports = {
   output: {
-    path: join(__dirname, '../../dist/apps/demo2'),
+    path: join(__dirname, '../../dist/apps/demo3'),
   },
   devServer: {
-    port: 4201,
-    historyApiFallback: {
-      index: '/index.html',
-    },
+    port: 4200,
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NX_TASK_TARGET_PROJECT': JSON.stringify(process.env.NX_TASK_TARGET_PROJECT),
-    }),
     new NxAppWebpackPlugin({
       tsConfig: './tsconfig.app.json',
-      compiler: 'babel',
+      compiler: 'swc',
       main: './src/main.tsx',
       index: './src/index.html',
       baseHref: '/',
